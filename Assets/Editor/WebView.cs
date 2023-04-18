@@ -50,7 +50,7 @@ public class WebView : EditorWindow
         //GUILayout.Button(new GUIContent("yellow"));
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.ExpandHeight(true));
         GUIStyle style = new GUIStyle() { alignment = TextAnchor.UpperLeft };
-        EditorGUILayout.LabelField(httpContent, style, GUILayout.ExpandHeight(true));
+        EditorGUILayout.TextArea(httpContent, style, GUILayout.ExpandHeight(true));
         EditorGUILayout.EndScrollView();
     }
 }
