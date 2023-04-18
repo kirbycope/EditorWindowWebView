@@ -13,26 +13,27 @@ public class WebView : EditorWindow
     private string httpContent;
     Vector2 scrollPos = Vector2.zero;
 
-    private async void GetHttp(string url) {
+    private async void GetHttp(string url)
+    {
         Debug.Log(url);
         var response = await httpClient.GetAsync(url);
         Debug.Log(response.StatusCode);
-       httpContent = response.Content.ReadAsStringAsync().Result;
+        httpContent = response.Content.ReadAsStringAsync().Result;
     }
 
-    private void ParseHttp(string response) {
-
-    }
+    private void ParseHttp(string response) { }
 
     [MenuItem("WebView/Open")]
-    static void WebViewOpen(){
+    static void WebViewOpen()
+    {
         WebView webView = (WebView)EditorWindow.GetWindow(typeof(WebView));
         webView.titleContent = new GUIContent("WebView");
         webView.minSize = new Vector2(640, 480);
         webView.Show();
     }
 
-    void OnGUI() {
+    void OnGUI()
+    {
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button(new GUIContent("←", "Click to go back"), GUILayout.Width(20)))
             Debug.Log("back");
@@ -40,7 +41,7 @@ public class WebView : EditorWindow
         GUILayout.Button(new GUIContent("↻", "Reload this page"), GUILayout.Width(20));
         GUILayout.Button(new GUIContent("⌂", "Open the home page"), GUILayout.Width(20));
         url = EditorGUILayout.TextField(url);
-        if(GUILayout.Button(new GUIContent("⏎", "Go"), GUILayout.Width(24)))
+        if (GUILayout.Button(new GUIContent("⏎", "Go"), GUILayout.Width(24)))
             GetHttp(url);
         GUILayout.Button(new GUIContent("☰", "Customize and control"), GUILayout.Width(20));
         EditorGUILayout.EndHorizontal();
@@ -48,9 +49,7 @@ public class WebView : EditorWindow
         //GUI.backgroundColor = Color.yellow;
         //GUILayout.Button(new GUIContent("yellow"));
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.ExpandHeight(true));
-        GUIStyle style = new GUIStyle(){
-            alignment = TextAnchor.UpperLeft
-        };
+        GUIStyle style = new GUIStyle() { alignment = TextAnchor.UpperLeft };
         EditorGUILayout.LabelField(httpContent, style, GUILayout.ExpandHeight(true));
         EditorGUILayout.EndScrollView();
     }
