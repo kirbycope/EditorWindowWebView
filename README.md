@@ -1,4 +1,4 @@
 ![EditorWindow WebView](/EditorWindowWebView.png)
 
-# EditorWindow WebView
+# EditorWindowWebView
 A WebView for the Unity EditorWindow.
